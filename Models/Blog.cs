@@ -12,5 +12,13 @@ namespace Models
         public List<Post> Posts { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime UpdateDate { get; set; }
+        public Color Color { get; set; }
+    }
+
+    // public enum Color:byte 老版本需要继承自byte
+    public enum Color{
+        Red,
+        Green,
+        Blue
     }
 }

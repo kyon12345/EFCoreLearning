@@ -33,6 +33,12 @@ namespace EFCoreCourseTest {
                 b.Property(p => p.UpdateDate)
                 .HasColumnType("DATETIME")
                 .HasDefaultValueSql("GETDATE()");
+
+                // b.Property(p => p.Color).HasColumnType("TINYINT");
+                //映射字符串(中文)
+                // b.Property(p => p.Color).HasConversion(typeof(string)).HasMaxLength(10);
+                //映射字符串
+                b.Property(p => p.Color).HasColumnType("VARCHAR(20)");
             });
         }
 

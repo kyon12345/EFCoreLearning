@@ -1,0 +1,7 @@
+bin
+obj
+.DS_Store
+*.db
+/node_modules
+wwwroot
+publish

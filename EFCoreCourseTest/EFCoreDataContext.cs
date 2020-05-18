@@ -13,42 +13,7 @@ namespace EFCoreCourseTest {
         }
 
         protected override void OnModelCreating (ModelBuilder builder) {
-            builder.Entity<Blog>().HasData(new Blog
-            {
-                Id = 1,
-                Name = "john"
-            }
-            );
-            builder.Entity<Blog>(b =>
-            {
-                b.Property(p => p.CreateDate)
-                .HasColumnType("DATETIME")
-                .HasDefaultValueSql("GETDATE()");
-
-                // //使用计算列
-                // b.Property(p => p.UpdateDate)
-                // .HasColumnType("DATETIME")
-                // .HasComputedColumnSql("GETDATE()");
-
-                b.Property(p => p.UpdateDate)
-                .HasColumnType("DATETIME")
-                .HasDefaultValueSql("GETDATE()");
-            });
-        }
-
-        public override int SaveChanges()
-        {
-            var entries = ChangeTracker.Entries().ToList();
-
-            var updateEntires= entries.Where(e => (e.Entity is IUpdatable)
-            && (e.State == EntityState.Modified)).ToList();
-
-            updateEntires.ForEach(e =>
-            {
-                ((IUpdatable)e.Entity).UpdateDate = DateTime.Now;
-            });
-
-            return base.SaveChanges();
+           
         }
     }
 }

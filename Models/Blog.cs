@@ -11,5 +11,6 @@ namespace Models
         public string Name { get; set; }
         public List<Post> Posts { get; set; }
         public DateTime CreatedDate{ get; set; }
+        public BirthDate BirthDate { get; set; }
     }
 }

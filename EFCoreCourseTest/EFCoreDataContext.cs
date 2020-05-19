@@ -10,6 +10,7 @@ namespace EFCoreCourseTest {
             = LoggerFactory.Create(builder => { builder.AddConsole(); });
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Order> Orders{ get; set; }
 
         protected override void OnConfiguring (DbContextOptionsBuilder builder) {
             builder.UseLoggerFactory(loggerFactory).
@@ -17,7 +18,20 @@ namespace EFCoreCourseTest {
         }
 
         protected override void OnModelCreating (ModelBuilder builder) {
-           
+            builder.Entity<Order>().OwnsOne(o => o.StreetAddress).ToTable("StreetAddress");
+        }
+
+        public override int SaveChanges()
+        {
+            foreach(var entry in ChangeTracker.Entries())
+            {
+                if(entry.Entity is Entity && entry.State == EntityState.Added&&entry.IsKeySet)
+                {
+                    ((Entity)entry.Entity).Id = 0;
+                }
+            }
+
+            return base.SaveChanges();
         }
     }
 }

@@ -5,11 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
-    //显式的Id
-    public class Entity
-    {
-        public int Id { get; set; }
-    }
+    // //显式的Id
+    // public class Entity
+    // {
+    //     public int Id { get; set; }
+    // }
     public class Blog
     {
         public int Id { get; set; }
@@ -17,8 +17,9 @@ namespace Models
         public List<Post> Posts { get; set; }
     }
 
-    public class Order:Entity
+    public class Order
     {
+        public int Id { get; set; }
         public StreetAddress StreetAddress { get; set; }
     }
 
@@ -27,6 +28,4 @@ namespace Models
         public string Street { get; set; }
         public string City { get; set; }
     }
-
-
 }

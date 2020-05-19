@@ -18,20 +18,20 @@ namespace EFCoreCourseTest {
         }
 
         protected override void OnModelCreating (ModelBuilder builder) {
-            builder.Entity<Order>().OwnsOne(o => o.StreetAddress).ToTable("StreetAddress");
+            builder.Entity<Order>().OwnsOne(o => o.StreetAddress);
         }
 
-        public override int SaveChanges()
-        {
-            foreach(var entry in ChangeTracker.Entries())
-            {
-                if(entry.Entity is Entity && entry.State == EntityState.Added&&entry.IsKeySet)
-                {
-                    ((Entity)entry.Entity).Id = 0;
-                }
-            }
+        // public override int SaveChanges()
+        // {
+        //     foreach(var entry in ChangeTracker.Entries())
+        //     {
+        //         if(entry.Entity is Entity && entry.State == EntityState.Added&&entry.IsKeySet)
+        //         {
+        //             ((Entity)entry.Entity).Id = 0;
+        //         }
+        //     }
 
-            return base.SaveChanges();
-        }
+        //     return base.SaveChanges();
+        // }
     }
 }

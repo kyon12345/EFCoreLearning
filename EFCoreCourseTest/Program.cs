@@ -40,11 +40,24 @@ namespace EFCoreCourseTest {
             // //始终使用参数化
             // var blog = context.Blogs.FromSqlRaw("select * from blogs where id={0}", id).ToList();
 
+
+            // var blog = context.Blogs.Find(1);
+
+            // blog.Name = "yon1";
+
+            // //执行语句
+            // // var rowEffected = context.Database.ExecuteSqlRaw("update blogs set name={0} where id=1", "Yon");
+            // var rowEffected = context.Database.ExecuteSqlRaw("update blogs set name={0} where id=1", blog.Name);
+
+            // //对已经加载的实体的更改,已经加载的实体会过时,使用重新加载的方式
+            // context.Entry(blog).Reload();
+
+            var blogNames = context.BlogDtos.ToList();
+
             //6184
             //1415
             Console.WriteLine($"花费时间为{stopTracker.ElapsedMilliseconds}");
 
-            
 
 
             Console.ReadKey (); 

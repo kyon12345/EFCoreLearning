@@ -20,14 +20,14 @@ namespace EFCoreCourseTest {
             // stopTracker.Stop();
 
             //饥饿加载
-            // var blog= context.Blogs.Include(b => b.Posts).FirstOrDefault();
+            var blog= context.Blogs.Include(b => b.Posts).FirstOrDefault();
             // var blog = context.Blogs.AsNoTracking().Include(b => b.Posts).FirstOrDefault();
 
             //显式的加载,分为两次查询,性能较低
-            var blog = context.Blogs.Find(1);
-            context.Entry(blog)
-            .Collection(b => b.Posts)
-            .Load();
+            // var blog = context.Blogs.Find(1);
+            // context.Entry(blog)
+            // .Collection(b => b.Posts)
+            // .Load();
 
             //6184
             //1415

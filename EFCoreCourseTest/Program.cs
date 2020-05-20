@@ -20,7 +20,7 @@ namespace EFCoreCourseTest {
             // stopTracker.Stop();
 
             //饥饿加载
-            var blog= context.Blogs.Include(b => b.Posts).FirstOrDefault();
+            // var blog= context.Blogs.Include(b => b.Posts).FirstOrDefault();
             // var blog = context.Blogs.AsNoTracking().Include(b => b.Posts).FirstOrDefault();
 
             //显式的加载,分为两次查询,性能较低
@@ -28,6 +28,17 @@ namespace EFCoreCourseTest {
             // context.Entry(blog)
             // .Collection(b => b.Posts)
             // .Load();
+
+            // //使用原始sql
+            // var blog = context.Blogs.FromSqlRaw("select * from blogs where id=2").AsNoTracking()
+            // .Include(b => b.Posts).ToList();
+
+            // //可能导致sql注入问题
+            // var id = 2;
+            // var blog = context.Blogs.FromSqlInterpolated($"select * from blogs where id ={id}").ToList();
+
+            // //始终使用参数化
+            // var blog = context.Blogs.FromSqlRaw("select * from blogs where id={0}", id).ToList();
 
             //6184
             //1415

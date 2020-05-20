@@ -15,9 +15,9 @@ namespace EFCoreCourseTest {
 
         protected override void OnConfiguring (DbContextOptionsBuilder builder) {
             builder.UseLoggerFactory(loggerFactory).
-            UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=EFCoreDb;Trusted_Connection=True;")
+            UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=EFCoreDb;Trusted_Connection=True;");
             //使用自定义的查询
-            .ReplaceService<IQuerySqlGeneratorFactory, CustomSqlServerQuerySqlGeneratorFactory>();
+            // .ReplaceService<IQuerySqlGeneratorFactory, CustomSqlServerQuerySqlGeneratorFactory>();
         }
 
         protected override void OnModelCreating (ModelBuilder builder) {
